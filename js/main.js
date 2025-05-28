@@ -383,4 +383,62 @@
 
     })();
 
+    // Character count for feedback message
+    const feedbackMessage = document.getElementById('feedback-message');
+    const feedbackCharCount = document.getElementById('feedback-char-count');
+    if (feedbackMessage && feedbackCharCount) {
+        feedbackMessage.addEventListener('input', function() {
+            feedbackCharCount.textContent = `${feedbackMessage.value.length} / 1000`;
+        });
+    }
+
+    // Feedback form submission
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('feedback-submit-btn');
+        const btnText = btn.querySelector('span');
+        btn.disabled = true;
+        btnText.textContent = 'Sending...';
+        btnText.style.color = 'orange';
+
+        fetch('https://script.google.com/macros/s/AKfycbyX_ZdoqDNEPaOf7toZTD455BvR9fZt9ETosqDVayw9xRg3hlvmHeabH6rS0Ze2Q-Mz/exec', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: document.getElementById('feedback-name').value,
+                email: document.getElementById('feedback-email').value,
+                message: document.getElementById('feedback-message').value
+            }),
+            headers: {
+                'Content-Type': 'text/plain'
+            }
+        })
+        .then(response => response.text())
+        .then(result => {
+            if(result.trim() === 'success') {
+                btnText.textContent = 'Sent!';
+                btnText.style.color = '';
+                document.getElementById('feedback-form').reset();
+                document.getElementById('feedback-char-count').textContent = '0 / 1000';
+            } else {
+                btnText.textContent = 'Failed!';
+                btnText.style.color = 'red';
+            }
+            setTimeout(() => {
+                btnText.textContent = 'Send Message';
+                btnText.style.color = '';
+                btn.disabled = false;
+            }, 5000);
+        })
+        .catch(error => {
+            btnText.textContent = 'Failed!';
+            btnText.style.color = 'red';
+            setTimeout(() => {
+                btnText.textContent = 'Send Message';
+                btnText.style.color = '';
+                btn.disabled = false;
+            }, 5000);
+        });
+    });
+
 })(document.documentElement);
+

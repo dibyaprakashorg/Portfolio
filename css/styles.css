@@ -4740,3 +4740,145 @@ td:last-child {
 .contact-list li {
 	padding-left: 0;
 }
+
+/* Feedback Form */
+.feedback-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    margin-bottom: 2rem;
+}
+
+.feedback-fields-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.feedback-field-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 260px;
+}
+
+.feedback-field-label {
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #222;
+    display: block;
+}
+
+.feedback-field-input input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    height: 2.4rem;
+    border: 1px solid #222;
+    border-radius: 4px;
+    background: #fff;
+    color: #222;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+
+.feedback-field-input input:focus {
+    border-color: #97b34a;
+}
+
+.feedback-message-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.feedback-message-row label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.feedback-message-row textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #222;
+    border-radius: 4px;
+    background: #fff;
+    color: #222;
+    font-size: 1rem;
+    resize: vertical;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.feedback-message-row textarea:focus {
+    border-color: #97b34a;
+}
+
+.feedback-char-count {
+    position: absolute;
+    right: 2rem;
+    bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #888;
+    background: #fff;
+    padding-left: .5rem;
+	padding-right: .5rem;
+}
+
+.feedback-btn {
+    background-color: #28a745 !important;
+    color: #fff !important;
+    border: none;
+}
+
+.feedback-btn:hover,
+.feedback-btn:focus {
+    background-color: #218838 !important;
+    color: #fff !important;
+}
+
+@media (max-width: 900px) {
+    .feedback-fields-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .feedback-field-group {
+		flex: 1 1 100%;
+        max-width: 100% ;
+        min-width: 0 ;
+        width: 100% ;
+    }
+    .feedback-field-input input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .feedback-form {
+        padding: 1rem 0.5rem 1rem 0.5rem;
+    }
+    .feedback-fields-row {
+        gap: 0.3rem;
+    }
+    .feedback-field-group {
+		flex: 1 1 100%;
+        max-width: 100% ;
+        min-width: 0 ;
+        width: 100% ;
+    }
+    .feedback-field-input input,
+    .feedback-message-row textarea {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.7rem;
+    }
+    .feedback-char-count {
+        right: 1rem;
+        bottom: 1.5rem;
+        font-size: 0.9rem;
+    }
+}
