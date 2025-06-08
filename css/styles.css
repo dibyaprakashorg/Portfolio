@@ -4913,7 +4913,20 @@ td:last-child {
     text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
+    .btn--cv,
+    .s-header__contact .btn {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media (max-width: 1000px) {
     .btn--cv {
         width: 100%;
         margin-right: 0;
@@ -4924,3 +4937,4 @@ td:last-child {
         display: flex;
     }
 }
+
