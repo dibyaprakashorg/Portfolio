@@ -4915,9 +4915,12 @@ td:last-child {
 
 @media (max-width: 600px) {
     .btn--cv {
-        font-size: 0.88em;
-        padding: 0.32em 0.7em;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
         margin-bottom: 0.5rem;
-        margin-right: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        display: flex;
     }
 }
