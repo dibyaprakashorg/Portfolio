@@ -85,22 +85,9 @@
     * ------------------------------------------------------ */ 
     const ssSwiper = function() {
 
-        const forceSingleSlideOnMobile = function(swiper) {
-            if (window.innerWidth <= 767) {
-                swiper.params.slidesPerView = 1;
-                swiper.params.spaceBetween = 0;
-                swiper.params.centeredSlides = false;
-                swiper.update();
-            }
-        };
-
         const homeSliderSwiper = new Swiper('.home-slider', {
 
             slidesPerView: 1,
-            spaceBetween: 0,
-            watchOverflow: true,
-            observer: true,
-            observeParents: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -109,7 +96,7 @@
                 // when window width is > 400px
                 401: {
                     slidesPerView: 1,
-                    spaceBetween: 0
+                    spaceBetween: 20
                 },
                 // when window width is > 800px
                 801: {
@@ -127,10 +114,6 @@
                     spaceBetween: 48
                 }
             }
-        });
-
-        homeSliderSwiper.on('init resize', function() {
-            forceSingleSlideOnMobile(this);
         });
 
         const pageSliderSwiper = new Swiper('.page-slider', {
@@ -157,10 +140,6 @@
                     spaceBetween: 48
                 }
             }
-        });
-
-        pageSliderSwiper.on('init resize', function() {
-            forceSingleSlideOnMobile(this);
         });
 
     }; // end ssSwiper
@@ -302,6 +281,29 @@
     }; // end ssMailChimpForm
 
 
+   /* alert boxes
+    * ------------------------------------------------------ */
+    const ssAlertBoxes = function() {
+
+        const boxes = document.querySelectorAll('.alert-box');
+  
+        boxes.forEach(function(box){
+
+            box.addEventListener('click', function(e) {
+                if (e.target.matches('.alert-box__close')) {
+                    e.stopPropagation();
+                    e.target.parentElement.classList.add('hideit');
+
+                    setTimeout(function() {
+                        box.style.display = 'none';
+                    }, 500)
+                }
+            });
+        })
+
+    }; // end ssAlertBoxes
+
+
     /* Back to Top
     * ------------------------------------------------------ */
     const ssBackToTop = function() {
@@ -376,6 +378,7 @@
         ssMobileMenu();
         ssSwiper();
         ssMailChimpForm();
+        ssAlertBoxes();
         ssMoveTo();
 
     })();
