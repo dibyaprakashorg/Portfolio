@@ -401,7 +401,7 @@
         btnText.textContent = 'Sending...';
         btnText.style.color = 'orange';
 
-        fetch('https://script.google.com/macros/s/AKfycbyX_ZdoqDNEPaOf7toZTD455BvR9fZt9ETosqDVayw9xRg3hlvmHeabH6rS0Ze2Q-Mz/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzoOEHksVMUKPJbalbfqOglhKbdv4AUPmeOgkkKa3F_HgVi2puapE0FrMNRpbzNZMOK/exec', {
             method: 'POST',
             body: JSON.stringify({
                 name: document.getElementById('feedback-name').value,
